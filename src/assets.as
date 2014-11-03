@@ -1,28 +1,37 @@
 package
 {
+	import flash.display.Bitmap;
+	import flash.utils.Dictionary;
+	
 	import starling.textures.Texture;
 
 	public class assets
 	{
 		[Embed(source="../media/graphics/bgwelcome.jpg")]
-		public static const Bgwelcome:Class;
+		public static const BgWelcome:Class;
 		
 		[Embed(source="../media/graphics/welcome_hero.png")]
-		public static const welcomehero:Class;
+		public static const WelcomeTitle:Class;
 		
 		[Embed(source="../media/graphics/welcome_title.png")]
-		public static const welcometitle:Class;
+		public static const WelcomeHero:Class;
 		
 		[Embed(source="../media/graphics/welcome_playButton.png")]
-		public static const welcomePlayBtn:Class;
+		public static const WelcomePlayBtn:Class;
 		
-		[Embed(source="../media/graphics/welcome_aboutButton.jpg")]
-		public static const welcomeAboutBtn:Class;
+		[Embed(source="../media/graphics/welcome_aboutButton.png")]
+		public static const WelcomeAboutBtn:Class;
 		
-		private static var gameTextures:
+		private static var gameTextures:Dictionary = new Dictionary();
 
 		public static function getTexture(name:String):Texture
 		{
-			
+			if (gameTextures[name] == undefined)
+			{
+				var bitmap:Bitmap = new assets[name]();
+				gameTextures[name] = Texture.fromBitmap(bitmap);
+			}
+			return gameTextures[name];
+		}
 	}
 }

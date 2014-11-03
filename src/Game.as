@@ -1,9 +1,14 @@
 package
 {
+	import screens.Welcome;
+	
 	import starling.display.Sprite;
+	import starling.events.Event;
 	
 	public class Game extends Sprite
 	{
+		private var screenWelcome:Welcome;
+		
 		public function Game()
 		{
 			super();
@@ -14,6 +19,10 @@ package
 		
 		{
 			trace("starling framework initialazed!");
+			
+			screenWelcome = new Welcome();
+			this.addChild(screenWelcome);
+			screenWelcome.intialize();
 		}
 	}
 }
